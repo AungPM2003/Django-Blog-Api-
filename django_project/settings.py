@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount', #new
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'drf_spectacular',
     #local
     'accounts.apps.AccountsConfig',
     'posts.apps.PostsConfig',
@@ -58,7 +59,15 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES":[ #new
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+    "DEFAULT_SCHEMA_CLASS":"drf_spectacular.openapi.AutoSchema",
+}
+
+#for schema
+SPECTACULAR_SETTINGS = {
+    "TITLE":"Blog API Project",
+    "DESCRIPTION":"A sample blog to learn drf",
+    "VERSION":"1.0.0",
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
